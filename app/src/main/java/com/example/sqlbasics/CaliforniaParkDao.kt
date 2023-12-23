@@ -25,4 +25,6 @@ interface CaliforniaParkDao {
     suspend fun insertAll(parks: List<CaliforniaPark>)
     @Query("SELECT * FROM park")
     suspend fun getAll(): List<CaliforniaPark>
+    @Query("SELECT name FROM park WHERE park_visitors < 1000000")
+    suspend fun getNamesLessMillionVisitors(): List<String>
 }
