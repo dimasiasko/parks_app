@@ -30,4 +30,8 @@ interface CaliforniaParkDao {
     @Query("SELECT SUM(park_visitors) FROM park\n" +
             "WHERE city = \"San Francisco\"")
     suspend fun getSunFranciscoParkVisitorsSum(): Int
+    @Query("SELECT name, park_visitors FROM park\n" +
+            "ORDER BY park_visitors DESC\n" +
+            "LIMIT 5")
+    suspend fun getOrderedNamesWithParkVisitors(): List<CaliforniaPark>
 }
