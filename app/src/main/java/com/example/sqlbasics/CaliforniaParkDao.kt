@@ -27,4 +27,7 @@ interface CaliforniaParkDao {
     suspend fun getAll(): List<CaliforniaPark>
     @Query("SELECT name FROM park WHERE park_visitors < 1000000")
     suspend fun getNamesLessMillionVisitors(): List<String>
+    @Query("SELECT SUM(park_visitors) FROM park\n" +
+            "WHERE city = \"San Francisco\"")
+    suspend fun getSunFranciscoParkVisitorsSum(): Int
 }
